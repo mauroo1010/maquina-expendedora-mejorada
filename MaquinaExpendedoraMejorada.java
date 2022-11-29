@@ -30,7 +30,12 @@ public class MaquinaExpendedoraMejorada {
         estacionOrigen = "Leon";
         estacionDestino = "Salamanca";
     }
-
+    public int vaciarDinero () {
+        int vaciarDinero = balanceClienteActual + totalDineroAcumulado;
+        balanceClienteActual = 0;
+        totalDineroAcumulado = 0;
+        return vaciarDinero;
+    }
     /**
      * Devuelve el precio del billete
      */
@@ -91,4 +96,4 @@ public class MaquinaExpendedoraMejorada {
         balanceClienteActual = 0;
         return cantidadDeDineroADevolver;
     } 
-}
+     }
