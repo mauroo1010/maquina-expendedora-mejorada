@@ -92,7 +92,7 @@ public class MaquinaExpendedoraMejorada {
             
             numeroBilletesVendidos = numeroBilletesVendidos + 1;
             if (verPremio==true) {
-                double descuento = precioBillete / 4.0;
+                double descuento = precioBillete * 0.25;
                 System.out.println("Has ganado un 25%(" + descuento + ")de descuento (€) en las barras de pan del Mercadona");
             }
             // Actualiza el total de dinero acumulado en la maquina
