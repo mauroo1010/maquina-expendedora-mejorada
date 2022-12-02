@@ -14,6 +14,8 @@ public class MaquinaExpendedoraMejorada {
     private int numeroBilletesVendidos;
     
     private boolean verPremio;
+    
+    private int maximoBilletes;
 
     /**
      * Crea una maquina expendedora de billetes de tren con el 
@@ -28,6 +30,7 @@ public class MaquinaExpendedoraMejorada {
         estacionDestino = destino;
         numeroBilletesVendidos = 0;
         verPremio = premio;
+        maximoBilletes = 5;
     }
      public MaquinaExpendedoraMejorada(boolean premio) {
         precioBillete = 20;
@@ -37,6 +40,7 @@ public class MaquinaExpendedoraMejorada {
         estacionDestino = "Salamanca";
         numeroBilletesVendidos = 0;
         verPremio = premio;
+        maximoBilletes = 5;
     }
     public int vaciarDinero () {
         int vaciarDinero = balanceClienteActual + totalDineroAcumulado;
@@ -68,12 +72,14 @@ public class MaquinaExpendedoraMejorada {
      * Simula la introduccion de dinero por parte del cliente actual
      */
     public void introducirDinero(int cantidadIntroducida) {
-        if (cantidadIntroducida > 0) {
-            balanceClienteActual = balanceClienteActual + cantidadIntroducida;
+        if (maximoBilletes  > numeroBilletesVendidos){
+            if (cantidadIntroducida > 0) {
+                balanceClienteActual = balanceClienteActual + cantidadIntroducida;
+            }
+            else {
+                System.out.println(cantidadIntroducida + " no es una cantidad de dinero valida.");
+            }
         }
-        else {
-            System.out.println(cantidadIntroducida + " no es una cantidad de dinero valida.");
-        }        
     }
 
     /**
@@ -91,18 +97,23 @@ public class MaquinaExpendedoraMejorada {
             System.out.println(); 
             
             numeroBilletesVendidos = numeroBilletesVendidos + 1;
-            if (verPremio==true) {
-                double descuento = precioBillete * 0.25;
-                System.out.println("Has ganado un 25%(" + descuento + ")de descuento (€) en las barras de pan del Mercadona");
-            }
+            if( maximoBilletes > numeroBilletesVendidos ){
+                if (verPremio==true) {
+                    double descuento = precioBillete * 0.25;
+                    System.out.println("Has ganado un 25%(" + descuento + ")de descuento (€) en las barras de pan del Mercadona");
+                }
             // Actualiza el total de dinero acumulado en la maquina
             totalDineroAcumulado = totalDineroAcumulado + precioBillete;
             // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
             balanceClienteActual = balanceClienteActual - precioBillete;
-        }else {
+            }
+            else {
+                System.out.println("maximo numero de Billetes alcanzado");
+            }
+        }
+        else {
             System.out.println("Necesitas introducir " + cantidadDeDineroQueFalta + " euros mas !");
         }
-        
     }
     public int getNumeroBilletesVendidos(){
         return numeroBilletesVendidos;
