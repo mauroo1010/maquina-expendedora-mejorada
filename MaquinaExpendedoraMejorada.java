@@ -22,7 +22,7 @@ public class MaquinaExpendedoraMejorada {
      * precio del billete y el origen y destino dados. Se asume que el precio
      * del billete que se recibe es mayor que 0.
      */
-    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino,boolean premio) {
+    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino,boolean premio, int maximoDeBilletes) {
         precioBillete = precioDelBillete;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
@@ -30,9 +30,9 @@ public class MaquinaExpendedoraMejorada {
         estacionDestino = destino;
         numeroBilletesVendidos = 0;
         verPremio = premio;
-        maximoBilletes = 5;
+        maximoBilletes = maximoDeBilletes;
     }
-     public MaquinaExpendedoraMejorada(boolean premio) {
+     public MaquinaExpendedoraMejorada(boolean premio, int maximoDeBilletes) {
         precioBillete = 20;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
@@ -40,7 +40,7 @@ public class MaquinaExpendedoraMejorada {
         estacionDestino = "Salamanca";
         numeroBilletesVendidos = 0;
         verPremio = premio;
-        maximoBilletes = 5;
+        maximoBilletes = maximoDeBilletes;
     }
     public int vaciarDinero () {
         int vaciarDinero = balanceClienteActual + totalDineroAcumulado;
