@@ -79,7 +79,10 @@ public class MaquinaExpendedoraMejorada {
             else {
                 System.out.println(cantidadIntroducida + " no es una cantidad de dinero valida.");
             }
+        } else {
+            System.out.println("dineroNoAceptado");
         }
+            
     }
 
     /**
@@ -87,17 +90,18 @@ public class MaquinaExpendedoraMejorada {
      */
     public void imprimirBillete() {
         int cantidadDeDineroQueFalta = precioBillete - balanceClienteActual;
-        if (cantidadDeDineroQueFalta <= 0) {        
-            // Simula la impresion de un billete
-            System.out.println("##################");
-            System.out.println("# Billete de tren:");
-            System.out.println("# De " + estacionOrigen + " a " + estacionDestino);
-            System.out.println("# " + precioBillete + " euros.");
-            System.out.println("##################");
-            System.out.println(); 
+             
+        if( numeroBilletesVendidos < maximoBilletes){   // Simula la impresion de un billete
             
-            numeroBilletesVendidos = numeroBilletesVendidos + 1;
-            if( maximoBilletes > numeroBilletesVendidos ){
+            if (cantidadDeDineroQueFalta <= 0) {   
+                System.out.println("##################");
+                System.out.println("# Billete de tren:");
+                System.out.println("# De " + estacionOrigen + " a " + estacionDestino);
+                System.out.println("# " + precioBillete + " euros.");
+                System.out.println("##################");
+                System.out.println(); 
+            
+                numeroBilletesVendidos = numeroBilletesVendidos + 1;
                 if (verPremio==true) {
                     double descuento = precioBillete * 0.25;
                     System.out.println("Has ganado un 25%(" + descuento + ")de descuento (€) en las barras de pan del Mercadona");
@@ -108,12 +112,12 @@ public class MaquinaExpendedoraMejorada {
             balanceClienteActual = balanceClienteActual - precioBillete;
             }
             else {
-                System.out.println("maximo numero de Billetes alcanzado");
+                System.out.println("Necesitas introducir " + cantidadDeDineroQueFalta + " euros mas !");
             }
         }
         else {
-            System.out.println("Necesitas introducir " + cantidadDeDineroQueFalta + " euros mas !");
-        }
+             System.out.println("maximo numero de Billetes alcanzado");
+        }   
     }
     public int getNumeroBilletesVendidos(){
         return numeroBilletesVendidos;
