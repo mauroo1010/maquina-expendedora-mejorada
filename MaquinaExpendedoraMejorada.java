@@ -90,9 +90,7 @@ public class MaquinaExpendedoraMejorada {
      */
     public void imprimirBillete() {
         int cantidadDeDineroQueFalta = precioBillete - balanceClienteActual;
-             
         if( numeroBilletesVendidos < maximoBilletes){   // Simula la impresion de un billete
-            
             if (cantidadDeDineroQueFalta <= 0) {   
                 System.out.println("##################");
                 System.out.println("# Billete de tren:");
@@ -103,8 +101,10 @@ public class MaquinaExpendedoraMejorada {
             
                 numeroBilletesVendidos = numeroBilletesVendidos + 1;
                 if (verPremio==true) {
+                    if( numeroBilletesVendidos % 4 == 3 ) {   
                     double descuento = precioBillete * 0.25;
                     System.out.println("Has ganado un 25%(" + descuento + ")de descuento (€) en las barras de pan del Mercadona");
+                    }
                 }
             // Actualiza el total de dinero acumulado en la maquina
             totalDineroAcumulado = totalDineroAcumulado + precioBillete;
